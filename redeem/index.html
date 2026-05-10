@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>HomeHold - Redeem</title>
+  <script>
+    // Try to open app via scheme
+    const code = window.location.pathname.split('/redeem/')[1] || '';
+    window.location.href = 'homehold://redeem?code=' + code;
+    // Fallback: redirect to App Store after 1.5s
+    setTimeout(function() {
+      const isIOS = /iPhone|iPad/.test(navigator.userAgent);
+      if (isIOS) {
+        window.location.href = 'https://apps.apple.com/app/id你的APPID';
+      } else {
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.shan.homecache';
+      }
+    }, 1500);
+  </script>
+</head>
+<body>
+  <p>正在打開 HomeHold...</p>
+</body>
+</html>
