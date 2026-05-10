@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>HomeHold</title>
+  <script>
+    var path = window.location.pathname;
+    if (path.includes('/redeem/')) {
+      var code = path.split('/redeem/')[1] || '';
+      window.location.href = 'homehold://redeem?code=' + code;
+      setTimeout(function() {
+        var isIOS = /iPhone|iPad/.test(navigator.userAgent);
+        if (isIOS) {
+          window.location.href = 'https://apps.apple.com/app/id你的APPID';
+        } else {
+          window.location.href = 'https://play.google.com/store/apps/details?id=com.shan.homecache';
+        }
+      }, 1500);
+    }
+  </script>
+</head>
+<body>
+  <p>正在打開 HomeHold...</p>
+</body>
+</html>
